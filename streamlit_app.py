@@ -24,7 +24,8 @@ streamlit.dataframe(fruits2show)
 
 
 streamlit.header("Fruityvice Fruit Advice!")
-fruit = 'kiwi'
+fruit = streamlit.text_input('What fruit would you like information about?', 'Kiwi')
+streamlit.write('The user entered', fruit)
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit)
 
 # write your own comment -what does the next line do? 
