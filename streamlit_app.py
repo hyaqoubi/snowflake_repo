@@ -51,16 +51,22 @@ streamlit.text(my_data_row)
 streamlit.header('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
 
 
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("select * from fruit_load_list")
-data_rows = my_cur.fetchall()
-streamlit.header("The fruit load list contains")
-streamlit.dataframe(data_rows)
+try:
+  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  my_cur = my_cnx.cursor()
+  my_cur.execute("select * from fruit_load_list")
+  data_rows = my_cur.fetchall()
+  streamlit.header("The fruit load list contains")
+  streamlit.dataframe(data_rows)
+except Exception as e:
+  streamlit.error(e)
 
-fruit2be_added = streamlit.text_input("What fruit would you like to add ?")
-my_cur.execute("insert into fruit_load_list values ('from streamlit')")
-streamlit.write('Thanks for adding ', fruit2be_added)
+try:
+  fruit2be_added = streamlit.text_input("What fruit would you like to add ?")
+  my_cur.execute("insert into fruit_load_list values ('from streamlit')")
+  streamlit.write('Thanks for adding ', fruit2be_added)
+except Exception as e:
+  streamlit.error(e)
 
 
 
