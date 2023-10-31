@@ -66,7 +66,7 @@ except Exception as e:
 
 try:
   fruit2be_added = streamlit.text_input("What fruit would you like to add ?")
-  my_cur.execute("insert into fruit_load_list values ('from streamlit')")
+  my_cur.execute("insert into fruit_load_list values (" + fruit2be_added + ")")
   streamlit.write('Thanks for adding ', fruit2be_added)
 except Exception as e:
   streamlit.error(e)
