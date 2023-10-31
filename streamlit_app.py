@@ -56,11 +56,11 @@ streamlit.header('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$')
 
 
 try:
-  if streamlit.button('Get Fruit Load List')
-  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-  data_rows = get_fruit_load_list(my_cnx)
-  streamlit.header("The fruit load list contains")
-  streamlit.dataframe(data_rows)
+  if streamlit.button('Get Fruit Load List'):
+    my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+    data_rows = get_fruit_load_list(my_cnx)
+    streamlit.header("The fruit load list contains")
+    streamlit.dataframe(data_rows)
 except Exception as e:
   streamlit.error(e)
 
