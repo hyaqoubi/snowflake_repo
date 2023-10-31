@@ -51,8 +51,8 @@ fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 streamlit.dataframe(fruityvice_normalized)
 
 
-streamlit.stop()
-import snowflake.connector
+# streamlit.stop()
+# import snowflake.connector
 cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 cur = cnx.cursor()
 cur.execute("select * from fruit_load_list")
